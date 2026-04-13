@@ -10,29 +10,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
-
-    - name: Deploy to EC2
+    - name: Deploy to EC2 via SSH
       uses: appleboy/ssh-action@v0.1.6
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ubuntu
         key: ${{ secrets.EC2_SSH_KEY }}
-        port: 22
         script: |
-          # Navigate to project directory
-          cd Flasks-Devops-Project || exit 1
-          
-          # Pull latest code
-          git pull origin main || exit 1
-          
-          # Stop and remove existing container
+          set -e
+
+          echo "📁 Go to project"
+          cd ~/flask-cicd-project || git clone https://github.com/your-username/flask-cicd-project.git
+
+          cd flask-cicd-project
+
+          echo "⬇️ Pull latest code"
+          git pull origin main
+
+          echo "🐳 Stop old container"
           sudo docker stop flask-app || true
           sudo docker rm flask-app || true
-          
-          # Build and run new container
+
+          echo "🏗️ Build new image"
           sudo docker build -t flask-cicd-project .
+
+          echo "🚀 Run container"
           sudo docker run -d -p 5000:5000 --name flask-app flask-cicd-project
-          
-          echo "✅ Deployment successful!"
+
+          echo "✅ Deployment done"
