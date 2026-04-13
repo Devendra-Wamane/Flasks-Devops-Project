@@ -19,10 +19,20 @@ jobs:
         host: ${{ secrets.EC2_HOST }}
         username: ubuntu
         key: ${{ secrets.EC2_SSH_KEY }}
+        port: 22
         script: |
-          cd flask-cicd-project
-          git pull origin main
-          docker stop flask-app || true
-          docker rm flask-app || true
-          docker build -t flask-cicd-project .
-          docker run -d -p 5000:5000 --name flask-app flask-cicd-project
+          # Navigate to project directory
+          cd Flasks-Devops-Project || exit 1
+          
+          # Pull latest code
+          git pull origin main || exit 1
+          
+          # Stop and remove existing container
+          sudo docker stop flask-app || true
+          sudo docker rm flask-app || true
+          
+          # Build and run new container
+          sudo docker build -t flask-cicd-project .
+          sudo docker run -d -p 5000:5000 --name flask-app flask-cicd-project
+          
+          echo "✅ Deployment successful!"
