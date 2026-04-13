@@ -19,10 +19,8 @@ jobs:
         script: |
           set -e
 
-          echo "📁 Go to project"
-          cd ~/flask-cicd-project || git clone https://github.com/your-username/flask-cicd-project.git
-
-          cd flask-cicd-project
+          echo "📁 Navigate to project directory"
+          cd ~/Flasks-Devops-Project
 
           echo "⬇️ Pull latest code"
           git pull origin main
@@ -37,4 +35,4 @@ jobs:
           echo "🚀 Run container"
           sudo docker run -d -p 5000:5000 --name flask-app flask-cicd-project
 
-          echo "✅ Deployment done"
+          echo "✅ Deployment successful!"
