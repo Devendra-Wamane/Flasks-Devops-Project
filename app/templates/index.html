@@ -1,53 +1,12 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0b1120">
-    <title>{{ profile.name }} | {{ profile.role }}</title>
-    <style>
-      :root {
-        color-scheme: dark;
-        --bg: #070b16;
-        --bg-soft: #0b1120;
-        --card: rgba(8, 15, 30, 0.72);
-        --card-strong: rgba(10, 18, 36, 0.92);
-        --border: rgba(148, 163, 184, 0.18);
-        --text: #e5eefb;
-        --muted: #9fb0c7;
-        --accent: #7dd3fc;
-        --accent-2: #34d399;
-        --accent-3: #fbbf24;
-      }
+{% extends "base.html" %}
 
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        font-family: Inter, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        color: var(--text);
-        background:
-          radial-gradient(circle at 18% 18%, rgba(125, 211, 252, 0.2), transparent 24%),
-          radial-gradient(circle at 82% 14%, rgba(52, 211, 153, 0.16), transparent 26%),
-          radial-gradient(circle at 50% 100%, rgba(251, 191, 36, 0.08), transparent 30%),
-          linear-gradient(160deg, var(--bg), var(--bg-soft));
-      }
-
-      .page {
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        padding: 24px;
-      }
-
-      .hero {
-        width: min(1120px, 100%);
-        padding: 28px;
-        border: 1px solid var(--border);
-        border-radius: 30px;
+{% block content %}
+<div class="card">
+    <h1>CI/CD Pipeline Working Automatically 🚀</h1>
+    <p>Your Flask app is successfully deployed using GitHub Actions + Docker + AWS EC2.</p>
+    <button onclick="alert('Deployment Successful!')">Check Status</button>
+</div>
+{% endblock %}
         background: var(--card);
         backdrop-filter: blur(20px);
         box-shadow: 0 28px 90px rgba(0, 0, 0, 0.42);

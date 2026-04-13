@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    margin: 0;
+    color: white;
+}
+
+nav {
+    background: rgba(0,0,0,0.3);
+    padding: 15px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.card {
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background: #ff7eb3;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
